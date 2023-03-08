@@ -1,43 +1,30 @@
-<style>
-  /* so we can use ／ and ＼ */
-  @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap");
-  
-  body {
-    background-color: rgb(235, 200, 109);
-    color: black;
-    font-size: 30px;
-    line-height: 30px;
-    word-wrap: anywhere;
-    font-family: "Noto Serif SC";
-  }
-</style>
-
-<body></body>
-
 <script>
-
   
-  function draw () {
-   	const fps = 1000/1
-   	setTimeout(draw, fps)
-    let ran = Math.random()
-    if (ran > 0.5) {
-      const randomColor = Math.floor(Math.random()*16777215).toString(16);
-      document.body.innerText += '}' 
-      document.body.style.color = "#" + randomColor;
-      document.body.style.fontSize = (500*ran);
-      document.body.style.fontFamily = "Calibri"
-    } else {
-    	document.body.innerText += '{*'
-      document.body.style.fontSize = (1000*ran);
-      document.body.style.fontFamily = "Papyrus";
-    }
-    
+  const gifURL = 'https://netart.rocks/images/butterfly.gif'
+  const gifWidth = 50
+  const gifHeight = 50
+  const gifOffsetX = 50
+  
+  function createGif(x, y) {
+    const gif = document.createElement('img')
+    gif.src = gifURL
+    document.body.appendChild(gif)
+    gif.style.width = gifWidth + 'px'
+    gif.style.height = gifHeight +'px'
+    gif.style.position = 'absolute' //"absolute designates zero pixels from the left, zero pixels from the top//
+    gif.style.left = x + 'px'
+    gif.style.top = y + 'px'
   }
-
-	window.addEventListener('load', draw)
+  
+  function setup () {
+		for (let c = 0; c < 10; c++){
+      const x = c * gifWidth - gifOffsetX
+      const y = 0
+      createGif(x, y)
+      
+  } } 
+  
+window.addEventListener('load', setup)
   
   
-
-
-</script>
+</script> 
